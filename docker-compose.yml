@@ -1,0 +1,11 @@
+version: "3.2"
+services:
+
+  sql-server-db:
+    container_name: bloom-presentation-db
+    image: microsoft/mssql-server-linux:2017-latest
+    ports:
+      - "6411:1433"
+    environment:
+      SA_PASSWORD: "Bloom_present"
+      ACCEPT_EULA: "Y"
