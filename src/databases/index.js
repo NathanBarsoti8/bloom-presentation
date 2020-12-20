@@ -5,7 +5,7 @@ const dbConfig = require('../configs/database');
 const Customers = require('../schemas/customers');
 const Phones = require('../schemas/phones');
 
-const connection = new Sequelize(dbConfig);
+const connection = new Sequelize(dbConfig.development);
 
 Customers.init(connection);
 Phones .init(connection);
