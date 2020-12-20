@@ -33,7 +33,8 @@ module.exports = {
 				id: {
 					type: Sequelize.INTEGER,
 					primaryKey: true,
-					allowNull: false
+					allowNull: false,
+					autoIncrement: true
 				},
 				ddd: {
 					type: Sequelize.STRING(3),
@@ -50,6 +51,14 @@ module.exports = {
 						model: 'customers',
 						key: 'id'
 					}
+				},
+				createdAt: {
+					type: Sequelize.DATE,
+					allowNull: false
+				},
+				updatedAt: {
+					type: Sequelize.DATE,
+					allowNull: false
 				}
 			})
 		])
@@ -57,8 +66,8 @@ module.exports = {
 
 	down: async (queryInterface, Sequelize) => {
 		return Promise.all([
-			await queryInterface.dropTable('customers'),
-			await queryInterface.dropTable('phones')
+			await queryInterface.dropTable('phones'),
+			await queryInterface.dropTable('customers')
 		])
 	}
 };

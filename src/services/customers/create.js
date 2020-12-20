@@ -9,23 +9,18 @@ module.exports = async (req, res) => {
 
     req.body.isActive = 1;
 
-
-    console.log('req.body', req.body)
-
-    Customers.create(req.body)
-
-   
-
-    // Customers.create(req.body).then(customer => {
-    //     if (customer) {
-
-    //         return res.status(201).json({ message: 'Customer created' })
-    //     }
-    //     else
-    //         return res.status(400).json({ message: 'Some error ocurred when trying to create a customer' })
-    // }).catch(err => {
-    //     return res.status(500).json({ message: err.message })
-    // })
+    Customers.create(req.body).then(customer => {
+        if (customer) {
+            if (req.body.phones && req.body.phones.length > 0) 
+                createPhone(req.body.phones, customer.id);
+            
+            return res.status(201).json({ message: 'Customer created' })
+        }
+        else
+            return res.status(400).json({ message: 'Some error ocurred when trying to create a customer' })
+    }).catch(err => {
+        return res.status(500).json({ message: err.message })
+    })
 
 }
 

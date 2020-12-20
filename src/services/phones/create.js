@@ -2,6 +2,8 @@ const Phones = require('../../schemas/phones')
 
 async function create(phones, customerId) {
 
+    console.log('customerId', customerId)
+
     if (!customerId) 
         return "need to send customerId"
     
