@@ -1,4 +1,5 @@
 const Customers = require('../../schemas/customers');
+const updatePhone = require('../phones/update').update;
 
 module.exports = async (req, res) => {
 
@@ -12,6 +13,8 @@ module.exports = async (req, res) => {
 
     try {
         customer.update(req.body)
+
+        updatePhone(req.body.phones, req.params.id)
 
         return res.status(200).send({ msg: 'customer updated'})
     } 
