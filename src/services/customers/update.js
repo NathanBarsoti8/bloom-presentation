@@ -11,11 +11,9 @@ module.exports = async (req, res) => {
         return res.status(404).json({ message: 'customer not found' })
 
     try {
-        customer.update({
-            isActive: 0
-        })
+        customer.update(req.body)
 
-        return res.status(200).send({ msg: 'customer deleted'})
+        return res.status(200).send({ msg: 'customer updated'})
     } 
     catch (error) {
         return res.status(500).json({ message: error.message })
