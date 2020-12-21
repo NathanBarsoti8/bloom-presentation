@@ -11,12 +11,14 @@ async function update(phones, customerId) {
         }
     })
 
-    for (const phone of phones) {
-        Phones.create({
-            ddd: phone.ddd,
-            number: phone.number,
-            customerId: customerId
-        })
+    if (phones.length > 0) {
+        for (const phone of phones) {
+            Phones.create({
+                ddd: phone.ddd,
+                number: phone.number,
+                customerId: customerId
+            })
+        }
     }
 
 }
